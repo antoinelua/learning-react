@@ -1,23 +1,33 @@
-import React from 'react';
+import './App.css'
+import { TwitterFollowCard } from './TwitterFollowCard.jsx'
+
+const users = [
+    {
+        userName: 'anto1nelua',
+        name: 'antoinelua',
+        isFollowing: true
+    },
+    {
+        userName: 'aadhope',
+        name: 'luna',
+        isFollowing: false
+    }
+]
 
 export function App() {
     return (
-        <article className='tw-followCard'>
-            <header className='tw-followCard-header'>
-                <img
-                    className='tw-followCard-avatar'
-                    alt="El avatar de lua"
-                    src="./images/cat.png" />
-                <div className='tw-followCard-info'>
-                    <strong>Lua Bazar</strong>
-                    <span className='tw-followCard-infoUsername'>@luabazar</span>
-                </div>
-            </header>
-            <aside>
-                <button className='tw-followCard-button'>
-                    Seguir
-                </button>
-            </aside>
-        </article>
+        <section className='App'>
+            {
+                users.map(({ userName, name, isFollowing }) => (
+                    <TwitterFollowCard
+                        key={userName}
+                        userName={userName}
+                        initialIsFollowing={isFollowing}
+                    >
+                        {name}
+                    </TwitterFollowCard>
+                ))
+            }
+        </section>
     )
 }
